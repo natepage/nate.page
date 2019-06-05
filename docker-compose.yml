@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+    static_nginx:
+        image: nginx
+        container_name: static_nginx
+        restart: always
+        volumes:
+          - ./:/var/www/public
+        networks:
+          - web
+          - default
+        expose:
+          - 80
+        labels:
+            - "traefik.docker.network=web"
+            - "traefik.enable=true"
+            - "traefik.frontend.rule=Host:nate.page"
+            - "traefik.port=80"
+
+networks:
+    web:
+        external: true
