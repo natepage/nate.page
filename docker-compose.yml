@@ -6,6 +6,7 @@ services:
         restart: always
         volumes:
           - ./:/var/www/public
+          - ./docker/nginx/nate.page.conf:/etc/nginx/conf.d/nate.page.conf
         networks:
           - web
           - default
